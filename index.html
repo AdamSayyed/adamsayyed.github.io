@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Sayyed | ML Engineer & Software Developer</title>
+    <meta name="description" content="Portfolio of Adam Sayyed, a Machine Learning Engineer and Software Developer specializing in AI, full-stack development, and system design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Placeholder for FontAwesome, user might need their own kit or I can use a CDN if this fails, but for now I'll use text icons or SVGs if needed. Actually, let's use a reliable CDN for icons or just SVGs to be safe. I'll stick to SVGs or standard text for now to avoid broken external deps, or use a standard cdnjs link. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Adam Sayyed<span class="accent">.</span></a>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact" class="btn-primary">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <h1 class="animate-fade-up">Building <span class="gradient-text">Intelligent Systems</span> <br> for the Real World.</h1>
+                <p class="subtitle animate-fade-up delay-1">Machine Learning Engineer | Software Developer | Researcher</p>
+                <div class="cta-group animate-fade-up delay-2">
+                    <a href="#projects" class="btn btn-primary">View Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-background">
+                <div class="glow-orb orb-1"></div>
+                <div class="glow-orb orb-2"></div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>I am a junior at the <strong>University of Maryland, Baltimore County (UMBC)</strong>, pursuing a B.S. in Computer Science with a specialization in Machine Learning and Artificial Intelligence. As a <strong>Meyerhoff Scholar</strong>, I am passionate about developing machine learning models that address interdisciplinary challenges and using my software engineering expertise to deploy these models in production environments.</p>
+                        <p>My work spans full-stack development, ML research, and system design, with a focus on building scalable, accurate, and practical AI-driven solutions that have real-world impact.</p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <h3>Focus</h3>
+                            <p>ML & AI</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Education</h3>
+                            <p>UMBC '25</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Role</h3>
+                            <p>Researcher & Dev</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section alt-bg">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    <!-- Sandia -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">Sandia National Laboratories</div>
+                        <div class="timeline-content">
+                            <h3>Machine Learning Engineer Intern</h3>
+                            <p>Engineered ML pipelines and integrated large language models with geospatial analytics software. Improved classification accuracy on field data and created robust multi-object tracking systems.</p>
+                        </div>
+                    </div>
+                    <!-- UMBC -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">UMBC Research</div>
+                        <div class="timeline-content">
+                            <h3>Research Assistant</h3>
+                            <p>Designed a multimodal neural architecture for stock-movement prediction, combining time-series financial indicators with transformer-based sentiment embeddings from fine-tuned FinBERT and RoBERTa models. Built end-to-end data pipelines for actionable insights.</p>
+                        </div>
+                    </div>
+                    <!-- FDA -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">FDA</div>
+                        <div class="timeline-content">
+                            <h3>Software Engineering Intern</h3>
+                            <p>Built interactive R Shiny dashboards to visualize dosing models, emphasizing usability, reliability, and real-world deployment.</p>
+                        </div>
+                    </div>
+                    <!-- U of Iowa -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">University of Iowa</div>
+                        <div class="timeline-content">
+                            <h3>Research Intern</h3>
+                            <p>Implemented and optimized seq2seq transformers for German-English translation, benchmarking performance against state-of-the-art models.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Technical Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <div class="tags">
+                            <span>Python</span>
+                            <span>C/C++</span>
+                            <span>JavaScript</span>
+                            <span>Assembly</span>
+                            <span>R</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Machine Learning</h3>
+                        <div class="tags">
+                            <span>PyTorch</span>
+                            <span>Transformers</span>
+                            <span>LLMs</span>
+                            <span>Computer Vision</span>
+                            <span>NLP</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Development</h3>
+                        <div class="tags">
+                            <span>Full-Stack</span>
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>Docker</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container contact-container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="contact-text">I'm always open to discussing new opportunities, research collaborations, or just chatting about AI and tech.</p>
+                <div class="social-links">
+                    <a href="mailto:hello@example.com" class="social-btn"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://github.com/" target="_blank" class="social-btn"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://linkedin.com/" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Adam Sayyed. Built with <i class="fas fa-code"></i> and <i class="fas fa-heart"></i>.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
