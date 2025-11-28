@@ -11,293 +11,259 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+        <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adam Sayyed | ML Engineer & Software Developer</title>
+        <meta name="description"
+            content="Portfolio of Adam Sayyed, a Machine Learning Engineer and Software Developer specializing in AI, full-stack development, and system design.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">Adam Sayyed<span class="accent">.</span></a>
-            <button class="mobile-menu-btn" aria-label="Toggle navigation">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#awards">Awards</a></li>
-                <li><a href="#contact" class="btn-primary">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="assets/profile.png" alt="Adam Sayyed" class="profile-img">
+                <h1 class="profile-name">Adam Sayyed</h1>
+                <p class="profile-pronouns">he/him</p>
+                <p class="profile-title">B.S. Computer Science, ML / AI Specialization @ UMBC</p>
 
-    <main>
-        <section id="hero" class="hero-section">
-            <div class="container hero-content">
-                <h1 class="animate-fade-up">Building <span class="gradient-text">Intelligent Systems</span> <br> for the
-                    Real World.</h1>
-                <p class="subtitle animate-fade-up delay-1">B.S. Computer Science, ML / AI Specialization</p>
-                <div class="cta-group animate-fade-up delay-2">
-                    <a href="#projects" class="btn btn-primary">View Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Maryland, USA</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-university"></i>
+                        <span>UMBC</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:adam.a.sayyed@gmail.com">Email</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/" target="_blank">Github</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/adamsayyed" target="_blank">LinkedIn</a>
+                    </div>
                 </div>
             </div>
-            <div class="hero-background">
-                <div class="glow-orb orb-1"></div>
-                <div class="glow-orb orb-2"></div>
-            </div>
-        </section>
 
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p>I am a <strong>Meyerhoff Scholar</strong> at the <strong>University of Maryland, Baltimore
-                                County (UMBC)</strong>, pursuing a B.S. in Computer Science with a specialization in
-                            Machine Learning and Artificial Intelligence. I am passionate about developing machine
-                            learning models that address interdisciplinary challenges and using my software engineering
-                            expertise to deploy these models in production environments.</p>
-                        <p>My work spans full-stack development, ML research, and system design, with a focus on
-                            building scalable, accurate, and practical AI-driven solutions that have real-world impact.
+            <div class="sidebar-footer">
+                <div class="logo-row">
+                    <!-- Placeholders for logos if needed, or just keep it clean -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <nav class="top-nav">
+                <a href="#" class="nav-logo">Adam Sayyed</a>
+                <ul class="nav-links">
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="content-wrapper">
+                <section id="about" class="content-section">
+                    <h2 class="section-heading">About</h2>
+                    <p>I am a <strong>Meyerhoff Scholar</strong> at the <strong>University of Maryland, Baltimore County
+                            (UMBC)</strong>, pursuing a B.S. in Computer Science with a specialization in Machine
+                        Learning and Artificial Intelligence. I am passionate about developing machine learning models
+                        that address interdisciplinary challenges and using my software engineering expertise to deploy
+                        these models in production environments.</p>
+                    <p>My work spans full-stack development, ML research, and system design, with a focus on building
+                        scalable, accurate, and practical AI-driven solutions that have real-world impact.</p>
+                </section>
+
+                <section id="background" class="content-section">
+                    <h2 class="section-heading">Background</h2>
+                    <p>I am currently a junior at UMBC. My academic journey has been enriched by rigorous research
+                        experiences and internships where I've applied theoretical knowledge to solve complex problems.
+                    </p>
+                    <p>I began my professional ML career as a Software Engineering & Machine Learning Intern at Sandia
+                        National Laboratories. Now, I continue to push the boundaries of AI as an Undergraduate
+                        Researcher.</p>
+                </section>
+
+                <section id="experience" class="content-section">
+                    <h2 class="section-heading">Experience</h2>
+                    <div class="timeline">
+                        <!-- Sandia -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">May 2025 - Present</div>
+                            <div class="timeline-content">
+                                <h3>Sandia National Laboratories</h3>
+                                <p class="role">Software Engineering & Machine Learning Intern</p>
+                                <p>Engineered Model-Context-Protocol (MCP) integration with LLMs, enabling automated
+                                    function calling and reducing manual query workflows for a geospatial analytics
+                                    software. Improved spectroscopy dataset reliability to 100% integrity by designing a
+                                    validation framework and extracting top 11 predictive features for model
+                                    development. Boosted classification accuracy to 95% on geospatial data by developing
+                                    and optimizing ML models (SVM, Random Forest, Gradient Boosting) while engineering
+                                    software to enable robust multi-object tracking in field operations.</p>
+                            </div>
+                        </div>
+                        <!-- UMBC -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">Jan 2025 - Present</div>
+                            <div class="timeline-content">
+                                <h3>University of Maryland Baltimore County</h3>
+                                <p class="role">Undergraduate Researcher</p>
+                                <p>Designed and implemented a custom multimodal neural architecture for stock-movement
+                                    prediction, integrating time-series technical indicators with transformer-based
+                                    sentiment embeddings from fine-tuned FinBERT and RoBERTa models. Fine-tuned FinBERT
+                                    and RoBERta models to generate finance-specific sentiment vectors and integrated
+                                    them into a multimodal pipeline for stock-movement prediction. Built end-to-end data
+                                    pipelines (Yahoo Finance, NewsAPI, GDELT), including preprocessing, feature
+                                    engineering, and temporal alignment of news with price movements.</p>
+                            </div>
+                        </div>
+                        <!-- U of Iowa -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">May 2024 - Jan 2025</div>
+                            <div class="timeline-content">
+                                <h3>University of Iowa</h3>
+                                <p class="role">Undergraduate Researcher (Mentor: Dr. Adhikari)</p>
+                                <p>Implemented and trained a seq2seq Transformer (“Attention Is All You Need”) for
+                                    German to English translation, fine-tuned on the Multi-30k dataset, and optimized
+                                    with Adam and hyperparameter tuning. Monitored and analyzed model performance using
+                                    PyTorch, NumPy, pandas, and Matplotlib, reducing translation loss through iterative
+                                    experimentation. Evaluated state-of-the-art LLMs with Hugging Face pipelines and
+                                    datasets, benchmarking transformer performance against established models.</p>
+                            </div>
+                        </div>
+                        <!-- FDA -->
+                        <div class="timeline-item">
+                            <div class="timeline-date">July 2022 - Aug 2022</div>
+                            <div class="timeline-content">
+                                <h3>United States Food & Drug Administration (FDA)</h3>
+                                <p class="role">Summer Intern</p>
+                                <p>Designed and implemented interactive R Shiny components for a bispecific antibody
+                                    dosing model, enabling dynamic visualization, responsive UI, and optimizing UI
+                                    workflows for regulatory scientists. Enhanced usability and reliability by
+                                    conducting iterative testing, integrating error handling, input validation, and
+                                    automated reporting, improving functionality and end-user trust.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projects" class="content-section">
+                    <h2 class="section-heading">Projects</h2>
+                    <div class="project-card">
+                        <h3>Full-Stack Chat App</h3>
+                        <p class="tech-stack">React.js, Node.js, Express.js, MongoDB, Mongoose, JavaScript</p>
+                        <p>Designed and developed a real-time messaging platform supporting 50+ concurrent users with
+                            chat rooms and live message transmission using React.js and Socket.IO. Built scalable
+                            server-side infrastructure for user accounts and chat data management with Node.js,
+                            Express.js, and MongoDB, enabling efficient retrieval and storage of thousands of messages.
                         </p>
                     </div>
-                    <div class="about-stats">
-                        <div class="stat-card">
-                            <h3>Focus</h3>
-                            <p>ML & AI</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>GPA</h3>
-                            <p>3.8</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Role</h3>
-                            <p>Researcher & Dev</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <section id="education" class="section alt-bg">
-            <div class="container">
-                <h2 class="section-title">Education</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">June 2023 - Present</div>
-                        <div class="timeline-content">
-                            <h3>University of Maryland, Baltimore County (UMBC)</h3>
-                            <p><strong>Meyerhoff Scholar</strong></p>
-                            <p>B.S. Computer Science, ML / AI Specialization</p>
-                            <p>GPA: 3.8</p>
+                <section id="skills" class="content-section">
+                    <h2 class="section-heading">Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Languages</h3>
+                            <div class="tags">
+                                <span>Python</span>
+                                <span>C/C++</span>
+                                <span>JavaScript</span>
+                                <span>Java</span>
+                                <span>Assembly</span>
+                                <span>Haskell</span>
+                                <span>HTML/CSS</span>
+                                <span>R</span>
+                                <span>C#</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Libraries/Frameworks</h3>
+                            <div class="tags">
+                                <span>PyTorch</span>
+                                <span>Pydantic</span>
+                                <span>Pandas</span>
+                                <span>NumPy</span>
+                                <span>Matplotlib</span>
+                                <span>FastMCP</span>
+                                <span>Seaborn</span>
+                                <span>Scikit-learn</span>
+                                <span>React</span>
+                                <span>SciPy</span>
+                                <span>NodeJS</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Developer Tools</h3>
+                            <div class="tags">
+                                <span>CI/CD pipeline</span>
+                                <span>GitLab</span>
+                                <span>Github</span>
+                                <span>Git</span>
+                                <span>HPC Clusters</span>
+                                <span>SLURM</span>
+                                <span>CUDA</span>
+                                <span>Linux</span>
+                                <span>Anaconda</span>
+                                <span>Pipenv</span>
+                                <span>Conda</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <section id="experience" class="section">
-            <div class="container">
-                <h2 class="section-title">Experience</h2>
-                <div class="timeline">
-                    <!-- Sandia -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">May 2025 - Present</div>
-                        <div class="timeline-content">
-                            <h3>Sandia National Laboratories</h3>
-                            <p><strong>Software Engineering & Machine Learning Intern</strong></p>
-                            <p>Engineered Model-Context-Protocol (MCP) integration with LLMs, enabling automated
-                                function calling and reducing manual query workflows for a geospatial analytics
-                                software. Improved spectroscopy dataset reliability to 100% integrity by designing a
-                                validation framework and extracting top 11 predictive features for model development.
-                                Boosted classification accuracy to 95% on geospatial data by developing and optimizing
-                                ML models (SVM, Random Forest, Gradient Boosting) while engineering software to enable
-                                robust multi-object tracking in field operations.</p>
-                        </div>
-                    </div>
-                    <!-- UMBC -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">January 2025 - Present</div>
-                        <div class="timeline-content">
-                            <h3>University of Maryland Baltimore County</h3>
-                            <p><strong>Undergraduate Researcher</strong></p>
-                            <p>Designed and implemented a custom multimodal neural architecture for stock-movement
-                                prediction, integrating time-series technical indicators with transformer-based
-                                sentiment embeddings from fine-tuned FinBERT and RoBERTa models. Fine-tuned FinBERT and
-                                RoBERTa models to generate finance-specific sentiment vectors and integrated them into a
-                                multimodal pipeline for stock-movement prediction. Built end-to-end data pipelines
-                                (Yahoo Finance, NewsAPI, GDELT), including preprocessing, feature engineering, and
-                                temporal alignment of news with price movements.</p>
-                        </div>
-                    </div>
-                    <!-- U of Iowa -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">May 2024 - January 2025</div>
-                        <div class="timeline-content">
-                            <h3>University of Iowa</h3>
-                            <p><strong>Undergraduate Researcher (Mentor: Dr. Adhikari)</strong></p>
-                            <p>Implemented and trained a seq2seq Transformer (“Attention Is All You Need”) for German to
-                                English translation, fine-tuned on the Multi-30k dataset, and optimized with Adam and
-                                hyperparameter tuning. Monitored and analyzed model performance using PyTorch, NumPy,
-                                pandas, and Matplotlib, reducing translation loss through iterative experimentation.
-                                Evaluated state-of-the-art LLMs with Hugging Face pipelines and datasets, benchmarking
-                                transformer performance against established models.</p>
-                        </div>
-                    </div>
-                    <!-- FDA -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">July 2022 - August 2022</div>
-                        <div class="timeline-content">
-                            <h3>United States Food & Drug Administration (FDA)</h3>
-                            <p><strong>Summer Intern</strong></p>
-                            <p>Designed and implemented interactive R Shiny components for a bispecific antibody dosing
-                                model, enabling dynamic visualization, responsive UI, and optimizing UI workflows for
-                                regulatory scientists. Enhanced usability and reliability by conducting iterative
-                                testing, integrating error handling, input validation, and automated reporting,
-                                improving functionality and end-user trust.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <section id="awards" class="content-section">
+                    <h2 class="section-heading">Awards</h2>
+                    <ul class="simple-list">
+                        <li>
+                            <strong>Meyerhoff Scholar, UMBC</strong> (January 2023 - Present)
+                        </li>
+                        <li>
+                            <strong>Dean’s List / President’s List</strong> (Academic)
+                        </li>
+                    </ul>
+                </section>
 
-        <section id="skills" class="section alt-bg">
-            <div class="container">
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Languages</h3>
-                        <div class="tags">
-                            <span>Python</span>
-                            <span>C/C++</span>
-                            <span>JavaScript</span>
-                            <span>Java</span>
-                            <span>Assembly</span>
-                            <span>Haskell</span>
-                            <span>HTML/CSS</span>
-                            <span>R</span>
-                            <span>C#</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Libraries/Frameworks</h3>
-                        <div class="tags">
-                            <span>PyTorch</span>
-                            <span>Pydantic</span>
-                            <span>Pandas</span>
-                            <span>NumPy</span>
-                            <span>Matplotlib</span>
-                            <span>FastMCP</span>
-                            <span>Seaborn</span>
-                            <span>Scikit-learn</span>
-                            <span>React</span>
-                            <span>SciPy</span>
-                            <span>NodeJS</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Developer Tools</h3>
-                        <div class="tags">
-                            <span>CI/CD pipeline</span>
-                            <span>GitLab</span>
-                            <span>Github</span>
-                            <span>Git</span>
-                            <span>HPC Clusters</span>
-                            <span>SLURM</span>
-                            <span>CUDA</span>
-                            <span>Linux</span>
-                            <span>Anaconda</span>
-                            <span>Pipenv</span>
-                            <span>Conda</span>
-                        </div>
-                    </div>
-                </div>
+                <section id="conferences" class="content-section">
+                    <h2 class="section-heading">Conference Presentations</h2>
+                    <ul class="simple-list">
+                        <li>
+                            <strong>2025 Joint Mathematics Meetings (JMM 2025)</strong> - January 2025
+                        </li>
+                        <li>
+                            <strong>IOWA Summer Undergraduate Research Conference (SURC)</strong> - July 2024
+                        </li>
+                    </ul>
+                </section>
             </div>
-        </section>
 
-        <section id="projects" class="section">
-            <div class="container">
-                <h2 class="section-title">Projects</h2>
-                <div class="about-grid">
-                    <div class="stat-card" style="text-align: left; width: 100%;">
-                        <h3>Full-Stack Chat App</h3>
-                        <p style="font-size: 1rem; color: var(--text-secondary); margin-top: 0.5rem;">React.js, Node.js,
-                            Express.js, MongoDB, Mongoose, JavaScript</p>
-                        <p style="font-size: 1rem; color: var(--text-secondary); margin-top: 1rem;">Designed and
-                            developed a real-time messaging platform supporting 50+ concurrent users with chat rooms and
-                            live message transmission using React.js and Socket.IO. Built scalable server-side
-                            infrastructure for user accounts and chat data management with Node.js, Express.js, and
-                            MongoDB, enabling efficient retrieval and storage of thousands of messages.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="awards" class="section alt-bg">
-            <div class="container">
-                <h2 class="section-title">Awards</h2>
-                <div class="about-stats" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                    <div class="stat-card">
-                        <h3>January 2023 - Present</h3>
-                        <p>Meyerhoff Scholar, UMBC</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Academic</h3>
-                        <p>Dean’s List / President’s List</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="conferences" class="section">
-            <div class="container">
-                <h2 class="section-title">Conference Presentations</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">January 2025</div>
-                        <div class="timeline-content">
-                            <h3>2025 Joint Mathematics Meetings (JMM 2025)</h3>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">July 2024</div>
-                        <div class="timeline-content">
-                            <h3>IOWA Summer Undergraduate Research Conference (SURC)</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section alt-bg">
-            <div class="container contact-container">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="contact-text">I'm always open to discussing new opportunities, research collaborations, or
-                    just chatting about AI and tech.</p>
-                <div class="social-links">
-                    <a href="mailto:adam.a.sayyed@gmail.com" class="social-btn"><i class="fas fa-envelope"></i>
-                        Email</a>
-                    <a href="tel:240-762-8462" class="social-btn"><i class="fas fa-phone"></i> Call</a>
-                    <a href="https://linkedin.com/in/adamsayyed" target="_blank" class="social-btn"><i
-                            class="fab fa-linkedin"></i> LinkedIn</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Adam Sayyed. Built with <i class="fas fa-code"></i> and <i class="fas fa-heart"></i>.</p>
-        </div>
-    </footer>
+            <footer>
+                <p>&copy; 2024 Adam Sayyed.</p>
+            </footer>
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
