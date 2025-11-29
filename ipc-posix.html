@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Performance IPC | Adam Sayyed</title>
+    <meta name="description"
+        content="Details of the High-Performance Interprocess Communication project by Adam Sayyed.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <img src="assets/profile.png" alt="Adam Sayyed" class="profile-img">
+                    <h1 class="profile-name">Adam Sayyed</h1>
+                </a>
+                <p class="profile-pronouns">he/him</p>
+                <p class="profile-title">Software & ML Engineer | B.S. Computer Science @ UMBC</p>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Maryland, USA</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-university"></i>
+                        <span>UMBC</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:adam.a.sayyed@gmail.com">Email</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/AdamSayyed" target="_blank">Github</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/adamsayyed" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logo-row">
+                    <!-- Placeholders for logos -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <nav class="top-nav">
+                <a href="index.html" class="nav-logo">Adam Sayyed</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#projects">Back to Projects</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+
+            <div class="content-wrapper">
+                <section class="content-section">
+                    <a href="index.html#projects"
+                        style="display: inline-block; margin-bottom: 1.5rem; color: var(--accent-primary); font-weight: 500;"><i
+                            class="fas fa-arrow-left"></i> Back to Projects</a>
+
+                    <h1 class="section-heading" style="display: block; border: none; margin-bottom: 0.5rem;">
+                        High-Performance IPC with POSIX Threads</h1>
+                    <p class="tech-stack" style="margin-bottom: 3rem; font-size: 1.1rem;">Multi-threaded Pipeline
+                        Simulation</p>
+
+                    <div class="project-details">
+                        <h3>Project Overview</h3>
+                        <p>Built a multi-threaded pipeline to simulate an operating system’s memory access management.
+                            The project implements interprocess communication (IPC) using POSIX threads
+                            (pthread.h) and message queues (mqueue.h) to pass memory requests
+                            through a staged pipeline. Each stage of the pipeline corresponds to a thread handling a
+                            specific task: reading, validating, and processing memory access requests.</p>
+
+                        <h3>Key Objectives</h3>
+                        <ul class="simple-list">
+                            <li><strong>Simulate memory request handling</strong> in an OS by mapping logical addresses
+                                to physical addresses.</li>
+                            <li><strong>Implement thread-safe message passing</strong> between pipeline stages using
+                                mailboxes (message queues).</li>
+                            <li><strong>Validate and log memory requests</strong> with timestamped output, demonstrating
+                                real-world concurrency patterns.</li>
+                            <li><strong>Ensure high-priority requests are handled first</strong> using message queue
+                                prioritization.</li>
+                        </ul>
+
+                        <h3>Technical Implementation</h3>
+
+                        <h4>Stage 1 – Producer Thread (stage1_producer)</h4>
+                        <ul class="simple-list">
+                            <li>Reads logical memory access requests from a text file. Each line contains a request ID,
+                                access type (read/write), memory address, and priority.</li>
+                            <li>Creates a structured message for each request and sends it to the first mailbox queue
+                                using mq_send.</li>
+                            <li>Integrated randomized delays (usleep) to simulate asynchronous arrival of
+                                requests.</li>
+                            <li>Used printf to verify real-time thread operation.</li>
+                        </ul>
+
+                        <h4>Stage 2 – Validator Thread (stage2_con_prod)</h4>
+                        <ul class="simple-list">
+                            <li>Receives messages from Stage 1 using mq_receive.</li>
+                            <li>Validates the request type and translates logical addresses to physical addresses by
+                                mapping (logical address – 500).</li>
+                            <li>Writes validated requests to stage2.log with timestamps using
+                                time() and ctime().</li>
+                            <li>Sends validated requests to the second mailbox queue, ensuring messages are sent with
+                                the correct priority.</li>
+                            <li>Simulated random processing delays to mimic real OS behavior.</li>
+                        </ul>
+
+                        <h4>Stage 3 – Consumer Thread (stage3_consumer)</h4>
+                        <ul class="simple-list">
+                            <li>Retrieves messages from Stage 2 mailbox, respecting priority order.</li>
+                            <li>Converts numeric access type back to human-readable format (“READ” / “WRITE”).</li>
+                            <li>Logs all requests to stage3.log with timestamps and prints output to the
+                                screen for monitoring.</li>
+                            <li>Simulated longer processing delays to reflect downstream workload.</li>
+                        </ul>
+
+                        <h3>Tools and Libraries</h3>
+                        <ul class="simple-list">
+                            <li><strong>C / GCC</strong>: Compiled with gcc -pthread -lrt for POSIX
+                                threading and real-time IPC support.</li>
+                            <li><strong>POSIX Threads (pthread.h)</strong>: Managed concurrent execution of producer,
+                                validator, and consumer threads.</li>
+                            <li><strong>Message Queues (mqueue.h)</strong>: Enabled asynchronous communication and
+                                prioritization of memory requests.</li>
+                            <li><strong>File I/O & Logging</strong>: Used structured logging with timestamps to monitor
+                                thread execution and request handling.</li>
+                        </ul>
+
+                        <h3>Challenges & Solutions</h3>
+                        <ul class="simple-list">
+                            <li><strong>Concurrency & Synchronization</strong>: Ensured thread-safe access to mailboxes
+                                while preserving message priority.</li>
+                            <li><strong>Randomized Processing Delays</strong>: Used usleep and a custom
+                                bsort helper to simulate real-world pipeline timing.</li>
+                            <li><strong>Message Structuring</strong>: Designed message structures
+                                (msg_stage1_t, msg_stage2_t) to efficiently pass data between
+                                threads.</li>
+                            <li><strong>Memory Safety</strong>: Ran valgrind to verify no memory leaks and
+                                proper resource cleanup (mq_close and mq_unlink).</li>
+                        </ul>
+
+                        <h3>Project Outcome</h3>
+                        <ul class="simple-list">
+                            <li>Successfully implemented a fully functional, multi-threaded IPC pipeline.</li>
+                            <li>Demonstrated ability to design and manage concurrent systems, handle message
+                                prioritization, and log structured output.</li>
+                            <li>Gained practical experience with low-level OS concepts, interprocess communication, and
+                                real-time thread management.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>&copy; 2024 Adam Sayyed.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -11,24 +11,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
-        <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Adam Sayyed | ML Engineer & Software Developer</title>
-        <meta name="description"
-            content="Portfolio of Adam Sayyed, a Machine Learning Engineer and Software Developer specializing in AI, full-stack development, and system design.">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
-        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </head>
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
 
 <body>
     <div class="app-container">
@@ -38,7 +25,7 @@
                 <img src="assets/profile.png" alt="Adam Sayyed" class="profile-img">
                 <h1 class="profile-name">Adam Sayyed</h1>
                 <p class="profile-pronouns">he/him</p>
-                <p class="profile-title">B.S. Computer Science, ML / AI Specialization @ UMBC</p>
+                <p class="profile-title">Software & ML Engineer | B.S. Computer Science @ UMBC</p>
 
                 <div class="contact-info">
                     <div class="contact-item">
@@ -55,7 +42,7 @@
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-github"></i>
-                        <a href="https://github.com/" target="_blank">Github</a>
+                        <a href="https://github.com/AdamSayyed" target="_blank">Github</a>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-linkedin"></i>
@@ -87,23 +74,133 @@
             <div class="content-wrapper">
                 <section id="about" class="content-section">
                     <h2 class="section-heading">About</h2>
-                    <p>I am a <strong>Meyerhoff Scholar</strong> at the <strong>University of Maryland, Baltimore County
+                    <p>I am a <strong>Meyerhoff Scholar</strong> and a junior at the <strong>University of Maryland,
+                            Baltimore County
                             (UMBC)</strong>, pursuing a B.S. in Computer Science with a specialization in Machine
-                        Learning and Artificial Intelligence. I am passionate about developing machine learning models
-                        that address interdisciplinary challenges and using my software engineering expertise to deploy
-                        these models in production environments.</p>
-                    <p>My work spans full-stack development, ML research, and system design, with a focus on building
-                        scalable, accurate, and practical AI-driven solutions that have real-world impact.</p>
+                        Learning and Artificial Intelligence. I focus on building end-to-end ML systems, designing
+                        models, engineering data pipelines, and deploying production-ready solutions across finance,
+                        geospatial analytics, and scientific computing. My work combines machine learning research with
+                        strong software engineering skills to deliver scalable, reliable, and domain-focused AI systems.
+                    </p>
                 </section>
 
                 <section id="background" class="content-section">
                     <h2 class="section-heading">Background</h2>
-                    <p>I am currently a junior at UMBC. My academic journey has been enriched by rigorous research
-                        experiences and internships where I've applied theoretical knowledge to solve complex problems.
-                    </p>
-                    <p>I began my professional ML career as a Software Engineering & Machine Learning Intern at Sandia
-                        National Laboratories. Now, I continue to push the boundaries of AI as an Undergraduate
-                        Researcher.</p>
+                    <p>I have gained hands-on experience developing and deploying machine learning solutions through a
+                        combination of research and industry internships. At Sandia National Laboratories, I engineered
+                        ML pipelines and integrated large language models with geospatial analytics software, improving
+                        classification accuracy on field data and creating robust multi-object tracking systems. At
+                        UMBC, I designed a multimodal neural architecture for stock-movement prediction, combining
+                        time-series financial indicators with transformer-based sentiment embeddings from fine-tuned
+                        FinBERT and RoBERTa models. This involved building end-to-end data pipelines, preprocessing,
+                        feature engineering, and aligning news sentiment with market data to generate actionable
+                        insights.</p>
+                    <p>In prior research at the University of Iowa, I implemented and optimized seq2seq transformers for
+                        German-English translation, benchmarking performance against state-of-the-art models. At the
+                        FDA, I developed interactive R Shiny modules linked to dosing-model computations, including
+                        dynamic UI updates, error handling, input validation, and automated reporting.</p>
+                    <p>Beyond ML, I have a strong software engineering background, with experience building full-stack
+                        applications, scalable backend systems, and low-level architectures in Python, C/C++,
+                        JavaScript, and assembly.</p>
+                </section>
+
+                <section id="projects" class="content-section">
+                    <h2 class="section-heading">Projects</h2>
+                    <div class="projects-grid">
+                        <!-- HPC Heat Diffusion -->
+                        <a href="hpc-simulation.html" class="project-card"
+                            style="text-decoration: none; color: inherit; display: block;">
+                            <h3>High-Performance 3D Heat Diffusion Engine</h3>
+                            <p class="tech-stack">MPI, OpenMP, CUDA, Slurm</p>
+                            <p>Designed and optimized a large-scale 3D heat diffusion simulation using hybrid MPI+OpenMP
+                                parallelism, CUDA GPU acceleration, and multi-node execution on a Slurm HPC cluster.
+                                Achieved perfect 8× multi-node scaling on large grids and a 1.7× GPU speedup over an
+                                8-core CPU baseline.</p>
+                        </a>
+
+                        <!-- Missile Simulation -->
+                        <a href="missile-simulation.html" class="project-card"
+                            style="text-decoration: none; color: inherit; display: block;">
+                            <h3>Missile Trajectory Simulation & Optimization</h3>
+                            <p class="tech-stack">C++, OpenGL, GLFW, Numerical Methods</p>
+                            <p>Developed a missile flight simulation using C++ with RK4 numerical integration to model
+                                aerodynamic drag, thrust, gravity, and wind effects. Implemented an angle-sweep
+                                optimization routine to compute maximum-range launch trajectories. Added a real-time 3D
+                                visualization using OpenGL, including animated flight playback and interactive camera
+                                controls.</p>
+                        </a>
+
+                        <!-- UMBC DoorDash -->
+                        <a href="umbc-doordash.html" class="project-card"
+                            style="text-decoration: none; color: inherit; display: block;">
+                            <h3>UMBC DoorDash – Campus Food Delivery</h3>
+                            <p class="tech-stack">FastAPI, MongoDB, Redis, Docker, React</p>
+                            <p>Built a full-stack delivery system tailored for UMBC students, modeled after DoorDash but
+                                optimized for campus life. The platform includes microservices for ordering,
+                                authentication, restaurant management, and driver coordination. Features include
+                                real-time driver tracking, dynamic route assignment, and a React dashboard. Backed by
+                                FastAPI, MongoDB, Redis, and Dockerized deployment, handling sub-200ms API latency
+                                during 400+ concurrent-user load tests.</p>
+                        </a>
+
+                        <!-- Full-Stack Chat App -->
+                        <div class="project-card">
+                            <h3>Full-Stack Chat App</h3>
+                            <p class="tech-stack">React.js, Node.js, Express.js, MongoDB, Mongoose, JavaScript</p>
+                            <p>Designed and developed a real-time messaging platform supporting 50+ concurrent users
+                                with chat rooms and live message transmission using React.js and Socket.IO. Built
+                                scalable server-side infrastructure for user accounts and chat data management with
+                                Node.js, Express.js, and MongoDB, enabling efficient retrieval and storage of thousands
+                                of messages.</p>
+                        </div>
+
+                        <!-- MiniMIPS CPU -->
+                        <a href="minimips.html" class="project-card"
+                            style="text-decoration: none; color: inherit; display: block;">
+                            <h3>MiniMIPS CPU – Custom MATLAB Processor</h3>
+                            <p class="tech-stack">MATLAB, Simulink, Assembly</p>
+                            <p>Built a complete 5-stage pipelined processor from scratch in MATLAB/Simulink, including a
+                                full instruction set, ALU, register file, memory subsystem, hazard detection,
+                                forwarding, and branch handling. The processor runs cycle-accurate simulations and
+                                successfully executes 100+ assembly programs such as Fibonacci, sorting, and matrix
+                                multiplication.</p>
+                        </a>
+
+                        <!-- Mini Unix -->
+                        <a href="mini-unix.html" class="project-card"
+                            style="text-decoration: none; color: inherit; display: block;">
+                            <h3>Building a Mini Unix</h3>
+                            <p class="tech-stack">C, Linux Kernel, Shell Scripting</p>
+                            <p>Built a fully functional mini Unix environment by compiling a custom Linux kernel with a
+                                personalized version string and adding a new system call. Developed a C shell capable of
+                                parsing commands of any length, managing processes with fork and exec, handling
+                                environment variables, and retrieving live system data from the /proc filesystem.</p>
+                        </a>
+
+                        <!-- High-Performance IPC -->
+                        <a href="ipc-posix.html" class="project-card"
+                            style="text-decoration: none; color: inherit; display: block;">
+                            <h3>High-Performance IPC with POSIX Threads</h3>
+                            <p class="tech-stack">C, POSIX Threads, Message Queues</p>
+                            <p>Developed a multi-threaded memory request pipeline using POSIX threads and message queues
+                                to simulate an operating system’s memory access. Implemented producer, validator, and
+                                consumer threads to process prioritized requests. Leveraged pthread and mqueue APIs for
+                                thread-safe message passing, integrated timestamped logging, and managed randomized
+                                delays to mimic real-world IO timing.</p>
+                        </a>
+
+                        <!-- Kernel-Level Producer-Consumer -->
+                        <a href="kernel-producer-consumer.html" class="project-card"
+                            style="text-decoration: none; color: inherit; display: block;">
+                            <h3>Kernel-Level Producer-Consumer System</h3>
+                            <p class="tech-stack">C, Linux Kernel Module, Semaphores</p>
+                            <p>Implemented a high-performance, thread-safe producer-consumer system directly in Linux
+                                kernel space. Designed circular buffers and inventory arrays with semaphores and
+                                mutexes, mapped user-space threads to kernel threads, and handled concurrent file I/O.
+                                Built an auditor thread to generate real-time inventory reports, ensuring correct
+                                synchronization and safe memory access.</p>
+                        </a>
+                    </div>
                 </section>
 
                 <section id="experience" class="content-section">
@@ -169,19 +266,6 @@
                     </div>
                 </section>
 
-                <section id="projects" class="content-section">
-                    <h2 class="section-heading">Projects</h2>
-                    <div class="project-card">
-                        <h3>Full-Stack Chat App</h3>
-                        <p class="tech-stack">React.js, Node.js, Express.js, MongoDB, Mongoose, JavaScript</p>
-                        <p>Designed and developed a real-time messaging platform supporting 50+ concurrent users with
-                            chat rooms and live message transmission using React.js and Socket.IO. Built scalable
-                            server-side infrastructure for user accounts and chat data management with Node.js,
-                            Express.js, and MongoDB, enabling efficient retrieval and storage of thousands of messages.
-                        </p>
-                    </div>
-                </section>
-
                 <section id="skills" class="content-section">
                     <h2 class="section-heading">Technical Skills</h2>
                     <div class="skills-grid">
@@ -213,6 +297,8 @@
                                 <span>React</span>
                                 <span>SciPy</span>
                                 <span>NodeJS</span>
+                                <span>OpenGL</span>
+                                <span>GLFW</span>
                             </div>
                         </div>
                         <div class="skill-category">
@@ -224,6 +310,8 @@
                                 <span>Git</span>
                                 <span>HPC Clusters</span>
                                 <span>SLURM</span>
+                                <span>MPI</span>
+                                <span>OpenMP</span>
                                 <span>CUDA</span>
                                 <span>Linux</span>
                                 <span>Anaconda</span>

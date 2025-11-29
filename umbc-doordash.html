@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMBC DoorDash | Adam Sayyed</title>
+    <meta name="description" content="Details of the UMBC DoorDash project by Adam Sayyed.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <img src="assets/profile.png" alt="Adam Sayyed" class="profile-img">
+                    <h1 class="profile-name">Adam Sayyed</h1>
+                </a>
+                <p class="profile-pronouns">he/him</p>
+                <p class="profile-title">Software & ML Engineer | B.S. Computer Science @ UMBC</p>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Maryland, USA</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-university"></i>
+                        <span>UMBC</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:adam.a.sayyed@gmail.com">Email</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/AdamSayyed" target="_blank">Github</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/adamsayyed" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logo-row">
+                    <!-- Placeholders for logos -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <nav class="top-nav">
+                <a href="index.html" class="nav-logo">Adam Sayyed</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#projects">Back to Projects</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+
+            <div class="content-wrapper">
+                <section class="content-section">
+                    <a href="index.html#projects"
+                        style="display: inline-block; margin-bottom: 1.5rem; color: var(--accent-primary); font-weight: 500;"><i
+                            class="fas fa-arrow-left"></i> Back to Projects</a>
+
+                    <h1 class="section-heading" style="display: block; border: none; margin-bottom: 0.5rem;">UMBC
+                        DoorDash</h1>
+                    <p class="tech-stack" style="margin-bottom: 2rem; font-size: 1.1rem;">Campus Food Delivery Platform
+                    </p>
+
+                    <div style="margin-bottom: 3rem;">
+                        <a href="https://github.com/AdamSayyed25/447SoftwareEngineering" target="_blank"
+                            style="color: var(--accent-primary); font-weight: 500; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
+                            <i class="fab fa-github"></i> View Project on GitHub
+                        </a>
+                    </div>
+
+                    <div class="project-details">
+                        <h3>1. Introduction & Motivation</h3>
+                        <p>UMBC DoorDash is a full-scale, production-ready campus food delivery platform designed for
+                            the University of Maryland, Baltimore County. The system addresses a clear pain point: the
+                            lack of a centralized delivery solution on campus. Students previously faced long walks or
+                            scattered third-party options that do not integrate with dining halls or campus restaurants
+                            well.</p>
+                        <p>UMBC DoorDash provides a seamless, unified experience for students, dining staff, and
+                            on-campus drivers, tailored to campus buildings, dining schedules, and spatial constraints.
+                        </p>
+
+                        <h3>2. System Architecture</h3>
+                        <div class="project-diagrams" style="margin: 2rem 0;">
+                            <figure style="margin-bottom: 2rem;">
+                                <img src="assets/umbc-doordash-class-diagram.png"
+                                    alt="UMBC DoorDash High-Level Class Diagram"
+                                    style="width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                                <figcaption
+                                    style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem; text-align: center;">
+                                    High-Level System Architecture & Class Hierarchy</figcaption>
+                            </figure>
+
+                            <figure style="margin-bottom: 2rem;">
+                                <img src="assets/umbc-doordash-db-schema.png" alt="UMBC DoorDash Database Schema"
+                                    style="width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                                <figcaption
+                                    style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem; text-align: center;">
+                                    Database Schema & Microservices Data Model</figcaption>
+                            </figure>
+                        </div>
+                        <p>The platform is built on a distributed microservices architecture, decoupling core services
+                            to maximize scalability, maintainability, and fault tolerance.</p>
+
+                        <h3>3. Core Features</h3>
+
+                        <h4>Distributed Microservice Platform</h4>
+                        <ul class="simple-list">
+                            <li>Authentication service with role-based access (student, driver, restaurant admin).</li>
+                            <li>Restaurant & Menu Service.</li>
+                            <li>Order Service.</li>
+                            <li>Driver Coordination Service.</li>
+                            <li>Real-Time WebSocket Service with Redis pub/sub for live event streaming.</li>
+                        </ul>
+
+                        <h4>Real-Time Driver Tracking</h4>
+                        <ul class="simple-list">
+                            <li>Drivers send GPS updates every 1–2 seconds.</li>
+                            <li>Students and restaurants monitor deliveries live.</li>
+                            <li>Reduces uncertainty and improves delivery accuracy.</li>
+                        </ul>
+
+                        <h4>Dynamic Route-Assignment Algorithm</h4>
+                        <ul class="simple-list">
+                            <li>Assigns drivers based on location, current workload, restaurant prep time, and
+                                dorm-specific constraints.</li>
+                            <li>Ensures low-latency dispatching and balanced driver workload.</li>
+                        </ul>
+
+                        <h4>Restaurant Admin Dashboard</h4>
+                        <ul class="simple-list">
+                            <li>React-based interface for real-time menu management, order monitoring, and operational
+                                oversight.</li>
+                            <li>Track peak order times and adjust open/closed hours dynamically.</li>
+                        </ul>
+
+                        <h4>Accelerated Backend Infrastructure</h4>
+                        <ul class="simple-list">
+                            <li>MongoDB stores all critical data: accounts, user profiles, orders, menus, and location
+                                information.</li>
+                            <li>Redis used for caching and event streaming.</li>
+                            <li>Dockerized microservices behind Nginx load balancer.</li>
+                            <li>JWT-secured authentication with hashed credentials.</li>
+                            <li>Stripe integration enables seamless in-app payments for students and campus dining,
+                                fully integrated with the backend for transaction verification and user account balance
+                                updates.</li>
+                        </ul>
+
+                        <h3>4. Performance & Scalability</h3>
+                        <ul class="simple-list">
+                            <li>Load-tested to simulate campus-scale usage: 400+ concurrent users.</li>
+                            <li>Sub-200ms API latency under peak load.</li>
+                            <li>1,500+ orders processed during full stress testing.</li>
+                            <li>WebSocket propagation delay: < 80ms.</li>
+                            <li>Scales easily across multiple dining halls and driver fleets.</li>
+                        </ul>
+
+                        <h3>5. Engineering Workflow & Documentation</h3>
+
+                        <h4>Comprehensive Documentation</h4>
+                        <ul class="simple-list">
+                            <li>System Requirements & Design Documents detailing architecture, APIs, and microservices.
+                            </li>
+                            <li>UI/UX flows and interaction mockups.</li>
+                            <li>Testing reports: unit tests, integration tests, and load testing.</li>
+                        </ul>
+
+                        <h4>Professional Workflow</h4>
+                        <ul class="simple-list">
+                            <li>Agile-inspired sprint cycles with work logs, epics, and user stories.</li>
+                            <li>GitHub for version control, issue tracking, and deployment pipelines.</li>
+                            <li>Iterative presentations and stakeholder reviews to ensure alignment and transparency.
+                            </li>
+                        </ul>
+
+                        <h3>6. University Impact</h3>
+                        <p>UMBC DoorDash enhances campus life by:</p>
+                        <ul class="simple-list">
+                            <li>Providing a centralized, fast, and reliable food delivery solution.</li>
+                            <li>Offering live dashboards for dining staff and campus vendors.</li>
+                            <li>Supporting student drivers in earning income while navigating campus efficiently.</li>
+                            <li>Enabling event catering, student organization orders, and late-night meal delivery.</li>
+                            <li>Seamlessly handling payments and account management through integrated Stripe + MongoDB
+                                backend.</li>
+                        </ul>
+
+                        <h3>7. Future Roadmap</h3>
+                        <p>Planned enhancements to refine the platform include:</p>
+                        <ul class="simple-list">
+                            <li>Predictive ML-based order batching and demand forecasting.</li>
+                            <li>Heatmap-style peak-time visualization.</li>
+                            <li>Push notifications for order updates.</li>
+                            <li>Smart delivery zones based on peak demand.</li>
+                            <li>Meal plan integration with campus ID payment.</li>
+                            <li>Intelligent driver scheduling based on historical workload patterns.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>&copy; 2024 Adam Sayyed.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

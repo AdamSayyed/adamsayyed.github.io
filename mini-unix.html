@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Mini Unix | Adam Sayyed</title>
+    <meta name="description" content="Details of the Mini Unix project by Adam Sayyed.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="assets/profile.png" alt="Adam Sayyed" class="profile-img">
+                <h1 class="profile-name">Adam Sayyed</h1>
+                <p class="profile-pronouns">he/him</p>
+                <p class="profile-title">Software & ML Engineer | B.S. Computer Science @ UMBC</p>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Maryland, USA</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-university"></i>
+                        <span>UMBC</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:adam.a.sayyed@gmail.com">Email</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/AdamSayyed" target="_blank">Github</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/adamsayyed" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logo-row">
+                    <!-- Placeholders for logos if needed, or just keep it clean -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <nav class="top-nav">
+                <a href="index.html" class="nav-logo">Adam Sayyed</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#projects">Back to Projects</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+
+            <div class="content-wrapper">
+                <section class="content-section">
+                    <a href="index.html#projects"
+                        style="display: inline-block; margin-bottom: 1.5rem; color: var(--accent-primary); font-weight: 500;"><i
+                            class="fas fa-arrow-left"></i> Back to Projects</a>
+
+                    <h1 class="section-heading" style="display: block; border: none; margin-bottom: 0.5rem;">Building a
+                        Mini Unix</h1>
+                    <p class="tech-stack" style="margin-bottom: 2rem; font-size: 1.1rem;">Custom Linux Kernel and C
+                        Shell from Scratch</p>
+
+                    <div style="margin-bottom: 3rem;">
+                        <a href="https://github.com/AdamSayyed/Building-a-Mini-Unix" target="_blank"
+                            style="color: var(--accent-primary); font-weight: 500; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
+                            <i class="fab fa-github"></i> View Project on GitHub
+                        </a>
+                    </div>
+
+                    <div class="project-details">
+                        <p>I engineered a full Linux development environment and custom kernel from scratch, then built
+                            a minimal but fully functional Unix-style shell with support for process creation, argument
+                            parsing, system execution, and /proc filesystem exploration.</p>
+
+                        <h3>1. Virtual Linux Environment Setup</h3>
+                        <p>Built an isolated Linux development environment using VirtualBox (Windows). Installed and
+                            configured Debian 11.5.0, ensuring the VM was optimized for resource usage and
+                            reproducibility. Established a structured Git workflow to version-control all system-level
+                            modifications and track implementation progress.</p>
+
+                        <h3>2. Compiling and Customizing the Linux Kernel</h3>
+                        <p>Downloaded and compiled the Linux Kernel (v5.15.67) manually from source. Customized the
+                            kernel configuration, regenerated .config, and optimized build settings. Added a custom
+                            kernel version string to identify and verify my own compiled kernel on boot. Installed the
+                            new kernel image, updated GRUB, and successfully booted into the custom environment.</p>
+
+                        <h3>3. Implementing a New Linux System Call</h3>
+                        <p>Extended the kernel syscall table to add a custom system call that prints a message directly
+                            from kernel space to the user’s screen. Modified syscall headers, implemented the
+                            kernel-mode C function, and rebuilt + reinstalled the kernel. Validated the system call by
+                            invoking it from a user-space C program via syscall().</p>
+
+                        <h3>4. Designing and Building a C-Based Shell</h3>
+                        <p>Built a minimal, robust shell similar to early Unix shells, with the following components:
+                        </p>
+                        <p><strong>Input Parsing & Execution</strong></p>
+                        <ul class="simple-list">
+                            <li>Implemented a full REPL loop with arbitrary-length input using dynamic memory (e.g.,
+                                getline()).</li>
+                            <li>Engineered a tokenizer + parser that handles multiple whitespace delimiters, quoted
+                                strings, and escaped characters (\n, \t, \", etc.).</li>
+                            <li>Created argument vectors compatible with all exec() variants.</li>
+                            <li>Used fork() and execvp() to spawn processes, and waitpid() for synchronization.</li>
+                            <li>Supports execution of system programs such as ls, cat, cp, mkdir, rm, echo, and any
+                                executable in $PATH.</li>
+                        </ul>
+                        <p><strong>Exit Command & Error Handling</strong></p>
+                        <ul class="simple-list">
+                            <li>Implemented a built-in exit command with optional integer return codes.</li>
+                            <li>Added robust validation for invalid or malformed exit arguments.</li>
+                            <li>Ensured complete memory cleanup and child-process termination on exit.</li>
+                        </ul>
+                        <p><strong>Memory Safety</strong></p>
+                        <ul class="simple-list">
+                            <li>Designed the shell with strict memory-management discipline.</li>
+                            <li>Validated correctness and leak-freedom using valgrind --leak-check=full.</li>
+                        </ul>
+
+                        <h3>5. Integrating /proc Filesystem Support</h3>
+                        <p>Added a custom shell feature to let users inspect Linux kernel and process information. My
+                            shell recognizes input beginning with /proc/... and:</p>
+                        <ul class="simple-list">
+                            <li>Opens the corresponding file directly using fopen().</li>
+                            <li>Reads and prints the contents to stdout (no cat, no external programs).</li>
+                            <li>Supports key system files: /proc/cpuinfo, /proc/loadavg, /proc/filesystems,
+                                /proc/mounts, /proc/&lt;pid&gt;/status, /proc/&lt;pid&gt;/environ,
+                                /proc/&lt;pid&gt;/sched.</li>
+                        </ul>
+                        <p>This required implementing safe file I/O layers, error-handling routines, and careful parsing
+                            of /proc entries.</p>
+
+                        <h3>6. Tools, Workflow, and Developer Practices</h3>
+                        <p>Maintained a detailed engineering worklog documenting architecture decisions, debugging
+                            steps, and kernel-level changes. Followed a disciplined Git workflow with clear commit
+                            histories, state-safe checkpoints, and continuous backups (GitHub + VM snapshots). Designed
+                            the entire system to be reproducible, easily recompiled, and compatible with future kernel
+                            modifications.</p>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>&copy; 2024 Adam Sayyed.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -243,9 +243,13 @@ ul {
 
 .role {
     font-size: 1rem;
-    color: var(--text-primary);
-    font-weight: 500;
-    margin-bottom: 0.8rem !important;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
 /* Projects Card */
@@ -272,6 +276,25 @@ ul {
     color: var(--accent-secondary) !important;
     margin-bottom: 1rem !important;
     font-family: monospace;
+}
+
+/* Project Details */
+.project-details h3 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.project-details h4 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+}
+
+.project-details p {
+    margin-bottom: 1.2rem;
 }
 
 /* Skills Grid */
