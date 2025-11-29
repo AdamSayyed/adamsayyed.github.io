@@ -49,12 +49,16 @@
                         <i class="fab fa-linkedin"></i>
                         <a href="https://linkedin.com/in/adamsayyed" target="_blank">LinkedIn</a>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <a href="assets/AdamSayyed_Resume.pdf" target="_blank">Resume</a>
+                    </div>
                 </div>
             </div>
 
             <div class="sidebar-footer">
                 <div class="logo-row">
-                    <!-- Placeholders for logos -->
+                    <!-- Placeholders for logos if needed, or just keep it clean -->
                 </div>
             </div>
         </aside>
@@ -78,7 +82,8 @@
 
                     <h1 class="section-heading" style="display: block; border: none; margin-bottom: 0.5rem;">
                         High-Performance 3D Heat Diffusion Engine</h1>
-                    <p class="tech-stack" style="margin-bottom: 2rem; font-size: 1.1rem;">MPI, OpenMP, CUDA, Slurm</p>
+                    <p class="tech-stack" style="margin-bottom: 2rem; font-size: 1.1rem;">MPI, OpenMP, CUDA,
+                        Slurm</p>
 
                     <div style="margin-bottom: 3rem;">
                         <a href="https://github.com/AdamSayyed/HPC-Optimized-Physics-Simulation" target="_blank"
@@ -89,7 +94,8 @@
 
                     <div class="project-details">
                         <h3>1. Introduction & Goals</h3>
-                        <p>This project focused on building a high-performance scientific simulation for 3D heat
+                        <p>This project focused on building a high-performance scientific simulation for 3D
+                            heat
                             diffusion and systematically optimizing it using multiple HPC techniques:</p>
                         <ul class="simple-list">
                             <li><strong>Shared-memory parallelism</strong> (OpenMP)</li>
@@ -99,13 +105,16 @@
                             <li><strong>GPU acceleration using CUDA</strong></li>
                             <li><strong>Performance profiling and strong scaling analysis</strong></li>
                         </ul>
-                        <p>The objective was to understand how memory bandwidth, cache behavior, and communication
+                        <p>The objective was to understand how memory bandwidth, cache behavior, and
+                            communication
                             overhead shape performance in real scientific workloads.</p>
 
                         <h3>2. Baseline Implementation (CPU, MPI, OpenMP)</h3>
-                        <p>A finite-difference stencil solver was implemented to update a 3D grid over time:</p>
+                        <p>A finite-difference stencil solver was implemented to update a 3D grid over time:
+                        </p>
                         <ul class="simple-list">
-                            <li>MPI handled <strong>domain decomposition</strong> and <strong>halo exchange</strong>
+                            <li>MPI handled <strong>domain decomposition</strong> and <strong>halo
+                                    exchange</strong>
                             </li>
                             <li>OpenMP executed updates within each sub-domain</li>
                             <li>A custom profiler measured per-rank wall clock times</li>
@@ -126,59 +135,70 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">1
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                                        1
                                     </td>
                                     <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
                                         10.84</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">2
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                                        2
                                     </td>
                                     <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
                                         3.41</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">4
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                                        4
                                     </td>
                                     <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
                                         1.62</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">8
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                                        8
                                     </td>
                                     <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
                                         0.94</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p>Results show near-perfect speedup up to 4 ranks and saturation by 8 ranks due to memory
+                        <p>Results show near-perfect speedup up to 4 ranks and saturation by 8 ranks due to
+                            memory
                             bandwidth limits.</p>
 
                         <h3>3. Optimization 1 — Cache Blocking (Tiling)</h3>
-                        <p>Implemented explicit cache tiling to improve data locality in <code>solver_cpu.cpp</code>.
+                        <p>Implemented explicit cache tiling to improve data locality in
+                            <code>solver_cpu.cpp</code>.
                         </p>
                         <p><strong>Outcome:</strong></p>
                         <ul class="simple-list">
                             <li>Speedup was small (~1.1×)</li>
                             <li>Memory bandwidth remained the main bottleneck</li>
-                            <li>MPI’s natural sub-domain decomposition effectively acted as a better "implicit" cache
+                            <li>MPI’s natural sub-domain decomposition effectively acted as a better
+                                "implicit" cache
                                 tiling method</li>
                         </ul>
-                        <p><strong>Key Insight:</strong> Shared-memory tiling is overshadowed by distributed-memory
+                        <p><strong>Key Insight:</strong> Shared-memory tiling is overshadowed by
+                            distributed-memory
                             decomposition for this memory-bound stencil.</p>
 
                         <h3>4. Optimization 2 — Multi-Node Scaling</h3>
                         <p>Used Slurm to run the simulation across multiple compute nodes.</p>
                         <h4>Small Grid (200³)</h4>
-                        <p>No speedup — problem fits into the CPU caches, and network overhead dominates.</p>
+                        <p>No speedup — problem fits into the CPU caches, and network overhead dominates.
+                        </p>
                         <h4>Large Grid (400³)</h4>
                         <p>When data exceeded LLC cache capacity:</p>
                         <ul class="simple-list">
                             <li><strong>Single node:</strong> 58.8s</li>
                             <li><strong>Two nodes:</strong> 7.3s</li>
-                            <li><strong>Speedup:</strong> <strong>8.0×</strong> (perfect linear scaling)</li>
+                            <li><strong>Speedup:</strong> <strong>8.0×</strong> (perfect linear scaling)
+                            </li>
                         </ul>
-                        <p><strong>Key Insight:</strong> Large grids shift bottlenecks from cache to RAM, allowing
+                        <p><strong>Key Insight:</strong> Large grids shift bottlenecks from cache to RAM,
+                            allowing
                             multi-node execution to multiply available memory bandwidth.</p>
 
                         <h3>5. Optimization 3 — GPU Acceleration (CUDA)</h3>
@@ -262,7 +282,8 @@
                                 <tr>
                                     <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
                                         Multi-Node MPI</td>
-                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">8×
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                                        8×
                                     </td>
                                     <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
                                         Network latency</td>
@@ -284,11 +305,14 @@
 
                         <h3>7. Key Takeaways</h3>
                         <ul class="simple-list">
-                            <li><strong>Memory bandwidth</strong> is the primary limiter for stencil computations.</li>
+                            <li><strong>Memory bandwidth</strong> is the primary limiter for stencil
+                                computations.</li>
                             <li><strong>Hybrid MPI+OpenMP</strong> is optimal for node-level scaling.</li>
-                            <li><strong>GPU compute is very fast</strong>, but PCIe transfers destroy performance unless
+                            <li><strong>GPU compute is very fast</strong>, but PCIe transfers destroy
+                                performance unless
                                 minimized.</li>
-                            <li><strong>Multi-node runs excel</strong> when the problem outgrows a single node’s cache &
+                            <li><strong>Multi-node runs excel</strong> when the problem outgrows a single
+                                node’s cache &
                                 RAM bandwidth.</li>
                         </ul>
 

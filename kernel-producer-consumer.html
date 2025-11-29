@@ -49,12 +49,16 @@
                         <i class="fab fa-linkedin"></i>
                         <a href="https://linkedin.com/in/adamsayyed" target="_blank">LinkedIn</a>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <a href="assets/AdamSayyed_Resume.pdf" target="_blank">Resume</a>
+                    </div>
                 </div>
             </div>
 
             <div class="sidebar-footer">
                 <div class="logo-row">
-                    <!-- Placeholders for logos -->
+                    <!-- Placeholders for logos if needed, or just keep it clean -->
                 </div>
             </div>
         </aside>
@@ -78,26 +82,36 @@
 
                     <h1 class="section-heading" style="display: block; border: none; margin-bottom: 0.5rem;">
                         Kernel-Level Producer-Consumer System</h1>
-                    <p class="tech-stack" style="margin-bottom: 3rem; font-size: 1.1rem;">Kernel-Space Multithreading &
+                    <p class="tech-stack" style="margin-bottom: 3rem; font-size: 1.1rem;">Kernel-Space
+                        Multithreading &
                         Synchronization</p>
 
                     <div class="project-details">
                         <h3>Project Overview</h3>
-                        <p>Developed a kernel-space IPC system that implements a producer-consumer workflow with
-                            multiple threads and system calls. The project extends user-space threading concepts into
-                            the Linux kernel, providing hands-on experience with kernel programming, synchronization
-                            primitives, and low-level memory and file management. The system handles book inventory
-                            requests from a producer thread, processes them in consumer threads, and generates a
+                        <p>Developed a kernel-space IPC system that implements a producer-consumer workflow
+                            with
+                            multiple threads and system calls. The project extends user-space threading
+                            concepts into
+                            the Linux kernel, providing hands-on experience with kernel programming,
+                            synchronization
+                            primitives, and low-level memory and file management. The system handles book
+                            inventory
+                            requests from a producer thread, processes them in consumer threads, and
+                            generates a
                             consolidated report using an auditor thread.</p>
 
                         <h3>Key Objectives</h3>
                         <ul class="simple-list">
-                            <li><strong>Implement thread-safe data structures</strong> in kernel space using semaphores
+                            <li><strong>Implement thread-safe data structures</strong> in kernel space using
+                                semaphores
                                 and mutexes.</li>
-                            <li><strong>Map user-space threading concepts</strong> to kernel-space system calls.</li>
-                            <li><strong>Simulate real-world producer-consumer operations</strong> with randomized
+                            <li><strong>Map user-space threading concepts</strong> to kernel-space system
+                                calls.</li>
+                            <li><strong>Simulate real-world producer-consumer operations</strong> with
+                                randomized
                                 processing times.</li>
-                            <li><strong>Generate structured logging</strong> for both producers and consumers, along
+                            <li><strong>Generate structured logging</strong> for both producers and
+                                consumers, along
                                 with an end-of-run auditor report.</li>
                         </ul>
 
@@ -105,28 +119,36 @@
 
                         <h4>Circular Buffer (Kernel-Space Message Queue)</h4>
                         <ul class="simple-list">
-                            <li>Implemented a 20-slot circular buffer for communication between producer and consumer
+                            <li>Implemented a 20-slot circular buffer for communication between producer and
+                                consumer
                                 threads.</li>
-                            <li>Synchronized access with kernel semaphores (struct semaphore) and mutexes (struct
+                            <li>Synchronized access with kernel semaphores (struct semaphore) and mutexes
+                                (struct
                                 mutex).</li>
-                            <li>empty and full semaphores prevent overflows and underflows, ensuring robust message
+                            <li>empty and full semaphores prevent overflows and underflows, ensuring robust
+                                message
                                 passing.</li>
                         </ul>
 
                         <h4>Inventory Array</h4>
                         <ul class="simple-list">
-                            <li>Implemented a 35-slot inventory array, each representing a unique Book ID (0–34).</li>
-                            <li>Each slot has its own mutex to allow thread-safe concurrent access by multiple
+                            <li>Implemented a 35-slot inventory array, each representing a unique Book ID
+                                (0–34).</li>
+                            <li>Each slot has its own mutex to allow thread-safe concurrent access by
+                                multiple
                                 consumers.</li>
-                            <li>Consumers increment book counts and store the book structs in the appropriate inventory
+                            <li>Consumers increment book counts and store the book structs in the
+                                appropriate inventory
                                 slot.</li>
                         </ul>
 
                         <h4>Producer Thread (System Call)</h4>
                         <ul class="simple-list">
-                            <li>Reads book entries from input.txt, parses into book structs, and inserts them into the
+                            <li>Reads book entries from input.txt, parses into book structs, and inserts
+                                them into the
                                 circular buffer.</li>
-                            <li>Simulates real-world variability by sleeping for randomized time intervals using
+                            <li>Simulates real-world variability by sleeping for randomized time intervals
+                                using
                                 fsleep().</li>
                             <li>Logs all produced entries with timestamps to producer_log.txt.</li>
                         </ul>
@@ -134,19 +156,24 @@
                         <h4>Consumer Thread (System Call)</h4>
                         <ul class="simple-list">
                             <li>Continuously checks the circular buffer for new books.</li>
-                            <li>Removes entries and updates the inventory array according to the Book ID and priority.
+                            <li>Removes entries and updates the inventory array according to the Book ID and
+                                priority.
                             </li>
-                            <li>Synchronization ensures safe access to shared buffer and inventory data.</li>
-                            <li>Logs each action to output_log.txt and prints status messages to the kernel using
+                            <li>Synchronization ensures safe access to shared buffer and inventory data.
+                            </li>
+                            <li>Logs each action to output_log.txt and prints status messages to the kernel
+                                using
                                 printk().</li>
                         </ul>
 
                         <h4>Auditor Thread (System Call)</h4>
                         <ul class="simple-list">
                             <li>Triggered once all consumer threads complete.</li>
-                            <li>Iterates through the inventory array to generate a final report segmented by priority
+                            <li>Iterates through the inventory array to generate a final report segmented by
+                                priority
                                 levels (0–2).</li>
-                            <li>Produces a neatly formatted summary listing book counts by ID and priority in
+                            <li>Produces a neatly formatted summary listing book counts by ID and priority
+                                in
                                 output_log.txt.</li>
                         </ul>
 
@@ -160,40 +187,51 @@
                                 </ul>
                             </li>
                             <li>Used kernel memory allocation (kmalloc, kfree) instead of malloc.</li>
-                            <li>Replaced standard I/O with kernel functions (filp_open, kernel_read) and logging via
+                            <li>Replaced standard I/O with kernel functions (filp_open, kernel_read) and
+                                logging via
                                 printk().</li>
                             <li>Replaced random number generation with get_random_bytes().</li>
                         </ul>
 
                         <h3>Thread Mapping & Execution Flow</h3>
                         <ul class="simple-list">
-                            <li>Each pthread in user space maps directly to a kernel thread, allowing producer,
+                            <li>Each pthread in user space maps directly to a kernel thread, allowing
+                                producer,
                                 consumer, and auditor threads to execute system calls concurrently.</li>
-                            <li>Producer and consumer threads operate in parallel, while the auditor waits until all
+                            <li>Producer and consumer threads operate in parallel, while the auditor waits
+                                until all
                                 consumers finish to summarize results.</li>
-                            <li>Proper synchronization guarantees no race conditions, deadlocks, or data corruption.
+                            <li>Proper synchronization guarantees no race conditions, deadlocks, or data
+                                corruption.
                             </li>
                         </ul>
 
                         <h3>Challenges & Solutions</h3>
                         <ul class="simple-list">
-                            <li><strong>Kernel Debugging</strong>: Implementing and testing system calls required full
+                            <li><strong>Kernel Debugging</strong>: Implementing and testing system calls
+                                required full
                                 kernel rebuilds and reboots.</li>
-                            <li><strong>Thread Synchronization</strong>: Ensured safe concurrent access to shared data
+                            <li><strong>Thread Synchronization</strong>: Ensured safe concurrent access to
+                                shared data
                                 structures using kernel semaphores and mutexes.</li>
-                            <li><strong>Randomized Delays</strong>: Modeled realistic production and consumption timing
+                            <li><strong>Randomized Delays</strong>: Modeled realistic production and
+                                consumption timing
                                 without breaking synchronization.</li>
-                            <li><strong>File I/O in Kernel</strong>: Transitioned from user-space file functions to
+                            <li><strong>File I/O in Kernel</strong>: Transitioned from user-space file
+                                functions to
                                 kernel equivalents, managing file handles and offsets safely.</li>
                         </ul>
 
                         <h3>Project Outcome</h3>
                         <ul class="simple-list">
-                            <li>Successfully implemented a fully functional kernel-space producer-consumer system with
+                            <li>Successfully implemented a fully functional kernel-space producer-consumer
+                                system with
                                 auditor reporting.</li>
-                            <li>Gained hands-on experience with kernel synchronization, system call implementation, and
+                            <li>Gained hands-on experience with kernel synchronization, system call
+                                implementation, and
                                 memory-safe logging in a concurrent environment.</li>
-                            <li>Demonstrated ability to translate user-space multithreaded designs into kernel-level
+                            <li>Demonstrated ability to translate user-space multithreaded designs into
+                                kernel-level
                                 implementations.</li>
                         </ul>
                     </div>

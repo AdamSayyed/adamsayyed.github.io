@@ -49,12 +49,16 @@
                         <i class="fab fa-linkedin"></i>
                         <a href="https://linkedin.com/in/adamsayyed" target="_blank">LinkedIn</a>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <a href="assets/AdamSayyed_Resume.pdf" target="_blank">Resume</a>
+                    </div>
                 </div>
             </div>
 
             <div class="sidebar-footer">
                 <div class="logo-row">
-                    <!-- Placeholders for logos -->
+                    <!-- Placeholders for logos if needed, or just keep it clean -->
                 </div>
             </div>
         </aside>
@@ -78,7 +82,8 @@
 
                     <h1 class="section-heading" style="display: block; border: none; margin-bottom: 0.5rem;">UMBC
                         DoorDash</h1>
-                    <p class="tech-stack" style="margin-bottom: 2rem; font-size: 1.1rem;">Campus Food Delivery Platform
+                    <p class="tech-stack" style="margin-bottom: 2rem; font-size: 1.1rem;">Campus Food
+                        Delivery Platform
                     </p>
 
                     <div style="margin-bottom: 3rem;">
@@ -90,13 +95,19 @@
 
                     <div class="project-details">
                         <h3>1. Introduction & Motivation</h3>
-                        <p>UMBC DoorDash is a full-scale, production-ready campus food delivery platform designed for
-                            the University of Maryland, Baltimore County. The system addresses a clear pain point: the
-                            lack of a centralized delivery solution on campus. Students previously faced long walks or
-                            scattered third-party options that do not integrate with dining halls or campus restaurants
+                        <p>UMBC DoorDash is a full-scale, production-ready campus food delivery platform
+                            designed for
+                            the University of Maryland, Baltimore County. The system addresses a clear pain
+                            point: the
+                            lack of a centralized delivery solution on campus. Students previously faced
+                            long walks or
+                            scattered third-party options that do not integrate with dining halls or campus
+                            restaurants
                             well.</p>
-                        <p>UMBC DoorDash provides a seamless, unified experience for students, dining staff, and
-                            on-campus drivers, tailored to campus buildings, dining schedules, and spatial constraints.
+                        <p>UMBC DoorDash provides a seamless, unified experience for students, dining staff,
+                            and
+                            on-campus drivers, tailored to campus buildings, dining schedules, and spatial
+                            constraints.
                         </p>
 
                         <h3>2. System Architecture</h3>
@@ -118,18 +129,21 @@
                                     Database Schema & Microservices Data Model</figcaption>
                             </figure>
                         </div>
-                        <p>The platform is built on a distributed microservices architecture, decoupling core services
+                        <p>The platform is built on a distributed microservices architecture, decoupling
+                            core services
                             to maximize scalability, maintainability, and fault tolerance.</p>
 
                         <h3>3. Core Features</h3>
 
                         <h4>Distributed Microservice Platform</h4>
                         <ul class="simple-list">
-                            <li>Authentication service with role-based access (student, driver, restaurant admin).</li>
+                            <li>Authentication service with role-based access (student, driver, restaurant
+                                admin).</li>
                             <li>Restaurant & Menu Service.</li>
                             <li>Order Service.</li>
                             <li>Driver Coordination Service.</li>
-                            <li>Real-Time WebSocket Service with Redis pub/sub for live event streaming.</li>
+                            <li>Real-Time WebSocket Service with Redis pub/sub for live event streaming.
+                            </li>
                         </ul>
 
                         <h4>Real-Time Driver Tracking</h4>
@@ -141,27 +155,32 @@
 
                         <h4>Dynamic Route-Assignment Algorithm</h4>
                         <ul class="simple-list">
-                            <li>Assigns drivers based on location, current workload, restaurant prep time, and
+                            <li>Assigns drivers based on location, current workload, restaurant prep time,
+                                and
                                 dorm-specific constraints.</li>
                             <li>Ensures low-latency dispatching and balanced driver workload.</li>
                         </ul>
 
                         <h4>Restaurant Admin Dashboard</h4>
                         <ul class="simple-list">
-                            <li>React-based interface for real-time menu management, order monitoring, and operational
+                            <li>React-based interface for real-time menu management, order monitoring, and
+                                operational
                                 oversight.</li>
                             <li>Track peak order times and adjust open/closed hours dynamically.</li>
                         </ul>
 
                         <h4>Accelerated Backend Infrastructure</h4>
                         <ul class="simple-list">
-                            <li>MongoDB stores all critical data: accounts, user profiles, orders, menus, and location
+                            <li>MongoDB stores all critical data: accounts, user profiles, orders, menus,
+                                and location
                                 information.</li>
                             <li>Redis used for caching and event streaming.</li>
                             <li>Dockerized microservices behind Nginx load balancer.</li>
                             <li>JWT-secured authentication with hashed credentials.</li>
-                            <li>Stripe integration enables seamless in-app payments for students and campus dining,
-                                fully integrated with the backend for transaction verification and user account balance
+                            <li>Stripe integration enables seamless in-app payments for students and campus
+                                dining,
+                                fully integrated with the backend for transaction verification and user
+                                account balance
                                 updates.</li>
                         </ul>
 
@@ -178,7 +197,8 @@
 
                         <h4>Comprehensive Documentation</h4>
                         <ul class="simple-list">
-                            <li>System Requirements & Design Documents detailing architecture, APIs, and microservices.
+                            <li>System Requirements & Design Documents detailing architecture, APIs, and
+                                microservices.
                             </li>
                             <li>UI/UX flows and interaction mockups.</li>
                             <li>Testing reports: unit tests, integration tests, and load testing.</li>
@@ -188,7 +208,8 @@
                         <ul class="simple-list">
                             <li>Agile-inspired sprint cycles with work logs, epics, and user stories.</li>
                             <li>GitHub for version control, issue tracking, and deployment pipelines.</li>
-                            <li>Iterative presentations and stakeholder reviews to ensure alignment and transparency.
+                            <li>Iterative presentations and stakeholder reviews to ensure alignment and
+                                transparency.
                             </li>
                         </ul>
 
@@ -197,9 +218,12 @@
                         <ul class="simple-list">
                             <li>Providing a centralized, fast, and reliable food delivery solution.</li>
                             <li>Offering live dashboards for dining staff and campus vendors.</li>
-                            <li>Supporting student drivers in earning income while navigating campus efficiently.</li>
-                            <li>Enabling event catering, student organization orders, and late-night meal delivery.</li>
-                            <li>Seamlessly handling payments and account management through integrated Stripe + MongoDB
+                            <li>Supporting student drivers in earning income while navigating campus
+                                efficiently.</li>
+                            <li>Enabling event catering, student organization orders, and late-night meal
+                                delivery.</li>
+                            <li>Seamlessly handling payments and account management through integrated
+                                Stripe + MongoDB
                                 backend.</li>
                         </ul>
 

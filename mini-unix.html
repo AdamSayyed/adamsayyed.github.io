@@ -21,8 +21,10 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="profile-section">
-                <img src="assets/profile.png" alt="Adam Sayyed" class="profile-img">
-                <h1 class="profile-name">Adam Sayyed</h1>
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <img src="assets/profile.png" alt="Adam Sayyed" class="profile-img">
+                    <h1 class="profile-name">Adam Sayyed</h1>
+                </a>
                 <p class="profile-pronouns">he/him</p>
                 <p class="profile-title">Software & ML Engineer | B.S. Computer Science @ UMBC</p>
 
@@ -46,6 +48,10 @@
                     <div class="contact-item">
                         <i class="fab fa-linkedin"></i>
                         <a href="https://linkedin.com/in/adamsayyed" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <a href="assets/AdamSayyed_Resume.pdf" target="_blank">Resume</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +82,8 @@
 
                     <h1 class="section-heading" style="display: block; border: none; margin-bottom: 0.5rem;">Building a
                         Mini Unix</h1>
-                    <p class="tech-stack" style="margin-bottom: 2rem; font-size: 1.1rem;">Custom Linux Kernel and C
+                    <p class="tech-stack" style="margin-bottom: 2rem; font-size: 1.1rem;">Custom Linux
+                        Kernel and C
                         Shell from Scratch</p>
 
                     <div style="margin-bottom: 3rem;">
@@ -87,40 +94,56 @@
                     </div>
 
                     <div class="project-details">
-                        <p>I engineered a full Linux development environment and custom kernel from scratch, then built
-                            a minimal but fully functional Unix-style shell with support for process creation, argument
+                        <p>I engineered a full Linux development environment and custom kernel from scratch,
+                            then built
+                            a minimal but fully functional Unix-style shell with support for process
+                            creation, argument
                             parsing, system execution, and /proc filesystem exploration.</p>
 
                         <h3>1. Virtual Linux Environment Setup</h3>
-                        <p>Built an isolated Linux development environment using VirtualBox (Windows). Installed and
+                        <p>Built an isolated Linux development environment using VirtualBox (Windows).
+                            Installed and
                             configured Debian 11.5.0, ensuring the VM was optimized for resource usage and
-                            reproducibility. Established a structured Git workflow to version-control all system-level
+                            reproducibility. Established a structured Git workflow to version-control all
+                            system-level
                             modifications and track implementation progress.</p>
 
                         <h3>2. Compiling and Customizing the Linux Kernel</h3>
-                        <p>Downloaded and compiled the Linux Kernel (v5.15.67) manually from source. Customized the
-                            kernel configuration, regenerated .config, and optimized build settings. Added a custom
-                            kernel version string to identify and verify my own compiled kernel on boot. Installed the
-                            new kernel image, updated GRUB, and successfully booted into the custom environment.</p>
+                        <p>Downloaded and compiled the Linux Kernel (v5.15.67) manually from source.
+                            Customized the
+                            kernel configuration, regenerated .config, and optimized build settings. Added a
+                            custom
+                            kernel version string to identify and verify my own compiled kernel on boot.
+                            Installed the
+                            new kernel image, updated GRUB, and successfully booted into the custom
+                            environment.</p>
 
                         <h3>3. Implementing a New Linux System Call</h3>
-                        <p>Extended the kernel syscall table to add a custom system call that prints a message directly
-                            from kernel space to the user’s screen. Modified syscall headers, implemented the
-                            kernel-mode C function, and rebuilt + reinstalled the kernel. Validated the system call by
+                        <p>Extended the kernel syscall table to add a custom system call that prints a
+                            message directly
+                            from kernel space to the user’s screen. Modified syscall headers, implemented
+                            the
+                            kernel-mode C function, and rebuilt + reinstalled the kernel. Validated the
+                            system call by
                             invoking it from a user-space C program via syscall().</p>
 
                         <h3>4. Designing and Building a C-Based Shell</h3>
-                        <p>Built a minimal, robust shell similar to early Unix shells, with the following components:
+                        <p>Built a minimal, robust shell similar to early Unix shells, with the following
+                            components:
                         </p>
                         <p><strong>Input Parsing & Execution</strong></p>
                         <ul class="simple-list">
-                            <li>Implemented a full REPL loop with arbitrary-length input using dynamic memory (e.g.,
+                            <li>Implemented a full REPL loop with arbitrary-length input using dynamic
+                                memory (e.g.,
                                 getline()).</li>
-                            <li>Engineered a tokenizer + parser that handles multiple whitespace delimiters, quoted
+                            <li>Engineered a tokenizer + parser that handles multiple whitespace delimiters,
+                                quoted
                                 strings, and escaped characters (\n, \t, \", etc.).</li>
                             <li>Created argument vectors compatible with all exec() variants.</li>
-                            <li>Used fork() and execvp() to spawn processes, and waitpid() for synchronization.</li>
-                            <li>Supports execution of system programs such as ls, cat, cp, mkdir, rm, echo, and any
+                            <li>Used fork() and execvp() to spawn processes, and waitpid() for
+                                synchronization.</li>
+                            <li>Supports execution of system programs such as ls, cat, cp, mkdir, rm, echo,
+                                and any
                                 executable in $PATH.</li>
                         </ul>
                         <p><strong>Exit Command & Error Handling</strong></p>
@@ -132,11 +155,13 @@
                         <p><strong>Memory Safety</strong></p>
                         <ul class="simple-list">
                             <li>Designed the shell with strict memory-management discipline.</li>
-                            <li>Validated correctness and leak-freedom using valgrind --leak-check=full.</li>
+                            <li>Validated correctness and leak-freedom using valgrind --leak-check=full.
+                            </li>
                         </ul>
 
                         <h3>5. Integrating /proc Filesystem Support</h3>
-                        <p>Added a custom shell feature to let users inspect Linux kernel and process information. My
+                        <p>Added a custom shell feature to let users inspect Linux kernel and process
+                            information. My
                             shell recognizes input beginning with /proc/... and:</p>
                         <ul class="simple-list">
                             <li>Opens the corresponding file directly using fopen().</li>
@@ -145,14 +170,19 @@
                                 /proc/mounts, /proc/&lt;pid&gt;/status, /proc/&lt;pid&gt;/environ,
                                 /proc/&lt;pid&gt;/sched.</li>
                         </ul>
-                        <p>This required implementing safe file I/O layers, error-handling routines, and careful parsing
+                        <p>This required implementing safe file I/O layers, error-handling routines, and
+                            careful parsing
                             of /proc entries.</p>
 
                         <h3>6. Tools, Workflow, and Developer Practices</h3>
-                        <p>Maintained a detailed engineering worklog documenting architecture decisions, debugging
-                            steps, and kernel-level changes. Followed a disciplined Git workflow with clear commit
-                            histories, state-safe checkpoints, and continuous backups (GitHub + VM snapshots). Designed
-                            the entire system to be reproducible, easily recompiled, and compatible with future kernel
+                        <p>Maintained a detailed engineering worklog documenting architecture decisions,
+                            debugging
+                            steps, and kernel-level changes. Followed a disciplined Git workflow with clear
+                            commit
+                            histories, state-safe checkpoints, and continuous backups (GitHub + VM
+                            snapshots). Designed
+                            the entire system to be reproducible, easily recompiled, and compatible with
+                            future kernel
                             modifications.</p>
                     </div>
                 </section>
