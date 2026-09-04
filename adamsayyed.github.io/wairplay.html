@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WairPlay P2P File Transfer | Adam Sayyed</title>
+    <meta name="description" content="Architecture deep-dive of WairPlay: a cross-platform, browser-native AirDrop clone over local Wi-Fi using WebRTC and Chrome MV3.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <img src="assets/profile.png" alt="Adam Sayyed" class="profile-img">
+                    <h1 class="profile-name">Adam Sayyed</h1>
+                </a>
+                <p class="profile-pronouns">he/him</p>
+                <p class="profile-title">Software & ML Engineer | B.S. Computer Science @ UMBC</p>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Maryland, USA</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-university"></i>
+                        <span>UMBC</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:adam.a.sayyed@gmail.com">Email</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/AdamSayyed" target="_blank">Github</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/adamsayyed" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-newspaper"></i>
+                        <a href="https://substack.com/@adamsayyed" target="_blank">Substack</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <a href="assets/AdamSayyed_Resume.pdf" target="_blank">Resume</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="logo-row">
+                    <!-- Placeholders for logos if needed, or just keep it clean -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <nav class="top-nav">
+                <a href="index.html" class="nav-logo">Adam Sayyed</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#projects">Back to Projects</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+
+            <div class="content-wrapper">
+                <section class="content-section">
+                    <a href="index.html#projects"
+                        style="display: inline-block; margin-bottom: 1.5rem; color: var(--accent-primary); font-weight: 500;"><i
+                            class="fas fa-arrow-left"></i> Back to Projects</a>
+
+                    <h1 class="section-heading" style="display: block; border: none; margin-bottom: 0.5rem;">
+                        WairPlay – Cross-Platform P2P File Transfer</h1>
+                    <p class="tech-stack" style="margin-bottom: 2rem; font-size: 1.1rem;">WebRTC, Socket.IO, Node.js, Manifest V3 Chrome Extension, JavaScript</p>
+
+                    <div style="margin-bottom: 3rem;">
+                        <a href="https://github.com/AdamSayyed/wairplay" target="_blank"
+                            style="color: var(--accent-primary); font-weight: 500; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
+                            <i class="fab fa-github"></i> View Project on GitHub
+                        </a>
+                    </div>
+
+                    <div class="project-details">
+                        <h3>1. Introduction & Motivation</h3>
+                        <p>There's a moment every developer has. You want to send a file from your laptop to your phone—something that should take three seconds—and instead you're emailing it to yourself, wrestling with a USB cable, or opening Google Drive for a 400KB PDF.</p>
+                        <p>AirDrop solves this perfectly, if everyone you care about has a Mac or iPhone. I wanted that for everything else. So I built <strong>WairPlay</strong>: a cross-platform, browser-native AirDrop clone that works over local Wi-Fi using WebRTC and a Chrome Extension.</p>
+                        <p>The premise is simple: two devices on the same Wi-Fi network should be able to exchange a file in under five seconds, without touching a server, without creating an account, and without installing anything. This page breaks down the full system architecture, the three-component design, the WebRTC handshake flow, and the complex corner cases forced by Chrome Manifest V3.</p>
+
+                        <h3>2. System Architecture</h3>
+                        <p>The system has three distinct components with a strict separation of concerns. The most important design decision: <strong>the server is dumb by construction</strong>. It never sees file data.</p>
+                        <ul class="simple-list">
+                            <li><strong>Signaling Server:</strong> Node.js + Socket.IO on port 3000. Maintains an in-memory <code>activeDevices</code> array. Relays WebRTC payloads between peers. No file data, ever.</li>
+                            <li><strong>Web Client:</strong> Vanilla JS, no framework. Connects via Socket.IO, renders device list, owns the full WebRTC lifecycle through a <code>WairPlayPeer</code> wrapper class.</li>
+                            <li><strong>Chrome Extension:</strong> Manifest V3. Three-layer architecture: Service Worker orchestrates, Offscreen Document runs WebRTC, Popup is a lightweight UI client with zero network logic.</li>
+                        </ul>
+                        <p><strong>Two protocols:</strong> Socket.IO (over WebSocket) handles all signaling—device registration, presence, and the exchange of WebRTC offers, answers, and ICE candidates. WebRTC <code>RTCDataChannel</code> handles the actual bytes. Once the P2P channel is open, the server is completely out of the loop.</p>
+
+                        <div style="background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--accent-primary); padding: 1.25rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
+                            <p style="margin: 0; font-style: italic; font-size: 1.05rem; color: #fff;">
+                                “The file data never touches the server. It travels at full LAN speed, DTLS-encrypted, directly between devices—the server is architecturally incapable of intercepting it.”
+                            </p>
+                        </div>
+
+                        <h3>3. The End-to-End Transfer Lifecycle</h3>
+                        <p>The entire sequence progresses cleanly from discovery to direct byte transfer:</p>
+                        <pre style="background: rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); overflow-x: auto; font-family: monospace; font-size: 0.95rem; color: #e2e8f0; margin: 1.5rem 0;">register-device → send-file-request → accept-file → SDP offer/answer → ICE candidates → DataChannel open → chunked transfer</pre>
+                        <p>The first three steps are pure Socket.IO user-facing permission flows before WebRTC even starts. Only after the receiver clicks “Accept” does either side attempt to construct an <code>RTCPeerConnection</code>.</p>
+
+                        <h3>4. WebRTC Negotiation & ICE Trickle</h3>
+                        <p>The sender creates the connection, opens a DataChannel named <code>"files"</code>, and generates an SDP offer. That offer gets relayed via the <code>signal</code> Socket.IO event to the receiver, who processes it and returns an SDP answer. Both sides then exchange ICE candidates—the browser’s mechanism for discovering viable network paths—until a direct route is established.</p>
+                        <pre style="background: rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); overflow-x: auto; font-family: monospace; font-size: 0.9rem; line-height: 1.6; color: #e2e8f0; margin: 1.5rem 0;"><code>// Sender side (simplified)
+const pc = new RTCPeerConnection({ iceServers: STUN_SERVERS });
+const dc = pc.createDataChannel("files");
+const offer = await pc.createOffer();
+await pc.setLocalDescription(offer);
+socket.emit("signal", { to: targetId, payload: offer });
+
+// ICE trickle
+pc.onicecandidate = ({ candidate }) => {
+  if (candidate) socket.emit("signal", { to: targetId, payload: candidate });
+};</code></pre>
+
+                        <h3>5. File Chunking & Backpressure Handling</h3>
+                        <p>Files are read via <code>FileReader</code>, sliced into 64KB <code>ArrayBuffer</code> chunks, and written to the DataChannel sequentially. The naive implementation breaks on large files—the DataChannel has a fixed internal buffer, and if you write faster than the network drains it, you’ll overflow and drop data.</p>
+                        <p>The fix is backpressure handling via <code>bufferedAmountLowThreshold</code>. When <code>dc.bufferedAmount</code> exceeds a threshold, the sender pauses and waits for the <code>bufferedamountlow</code> event before resuming:</p>
+                        <pre style="background: rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); overflow-x: auto; font-family: monospace; font-size: 0.9rem; line-height: 1.6; color: #e2e8f0; margin: 1.5rem 0;"><code>dc.bufferedAmountLowThreshold = 64 * 1024; // 64KB
+dc.onbufferedamountlow = () => sendNextChunk();
+
+function sendNextChunk() {
+  if (dc.bufferedAmount > dc.bufferedAmountLowThreshold) return;
+  const chunk = fileBuffer.slice(offset, offset + CHUNK_SIZE);
+  dc.send(chunk);
+  offset += CHUNK_SIZE;
+  if (offset < fileBuffer.byteLength) sendNextChunk();
+}</code></pre>
+                        <p>On the receiving end, <code>WairPlayTransfer</code> accumulates incoming <code>ArrayBuffer</code> chunks and matches them against previously sent JSON metadata (filename, total size, chunk count). Once all chunks arrive, it reconstructs the final <code>Blob</code> and triggers a download.</p>
+
+                        <h3>6. The Chrome Extension: Manifest V3 Architecture</h3>
+                        <p>The web client was relatively clean, but building the Chrome Extension presented major architectural hurdles. Manifest V3 prohibits several APIs in Service Workers that are fundamental to persistent WebRTC connections, forcing a decoupled three-layer design:</p>
+                        <ul class="simple-list">
+                            <li><strong>Layer 1: The Service Worker (background.js):</strong> Ephemeral by nature; it can spin down at any moment. Its two jobs: ensure the Offscreen Document exists on startup, and surface <code>chrome.notifications</code> when an incoming file request arrives. It also acts as a <code>chrome.storage</code> proxy, since Offscreen Documents lack direct access to that API.</li>
+                            <li><strong>Layer 2: The Offscreen Document (offscreen.js):</strong> This is where all actual networking lives. The Offscreen Document API provides a persistent hidden DOM context—the only place in MV3 where you can maintain a long-lived WebSocket connection and construct an <code>RTCPeerConnection</code>. It owns the Socket.IO connection, the WebRTC handshake, and triggers the <code>chrome.downloads</code> call that saves received files. Reading saved server URLs requires round-trip messaging through the background proxy.</li>
+                            <li><strong>Layer 3: The Popup (popup.js):</strong> Intentionally designed as a dumb UI shell with zero network logic. It polls the Offscreen Document for state via <code>chrome.runtime.sendMessage</code> and renders whatever state it receives.</li>
+                        </ul>
+
+                        <h3>7. Solving the IPC Memory Problem</h3>
+                        <p>The hardest engineering constraint emerged during sending: when a user picks a file in the popup, that file must be transferred to the Offscreen Document. The naive approach—serializing it as an <code>ArrayBuffer</code> through <code>sendMessage</code>—immediately crashes the IPC port on anything larger than a few megabytes because Chrome stringifies messaging payloads.</p>
+                        <p>The solution was to keep the file in popup memory as a <code>Blob</code> and pass a lightweight URL reference string instead:</p>
+                        <pre style="background: rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); overflow-x: auto; font-family: monospace; font-size: 0.9rem; line-height: 1.6; color: #e2e8f0; margin: 1.5rem 0;"><code>// popup.js — don't serialize the file, just reference it
+const blobUrl = URL.createObjectURL(file); // "blob:chrome-extension://..."
+chrome.runtime.sendMessage({ type: "send-file", url: blobUrl, meta: fileMeta });
+
+// offscreen.js — fetch it natively, no IPC memory pressure
+const response = await fetch(blobUrl);
+const buffer = await response.arrayBuffer();
+// slice and send via transfer.js</code></pre>
+                        <p>The Blob URL keeps actual file bytes localized in popup memory. The Offscreen Document fetches it natively as if it were any other resource. Chrome handles cross-context memory access internally, preventing IPC serialization crashes.</p>
+
+                        <h3>8. MV3 Architectural Summary</h3>
+                        <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+                            <thead>
+                                <tr style="background-color: rgba(255, 255, 255, 0.05);">
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">Manifest V3 Constraint</th>
+                                    <th style="padding: 0.75rem; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">WairPlay Workaround Solution</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">No WebRTC in Service Workers</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Offscreen Document owns all <code>RTCPeerConnection</code> logic</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">No persistent WebSocket in SW</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Socket.IO connection lives exclusively inside the Offscreen Document</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">No <code>chrome.storage</code> in Offscreen</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Background SW acts as a storage proxy via asynchronous IPC messaging</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">IPC crashes on large binary buffers</td>
+                                    <td style="padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Pass lightweight <code>blob:</code> URL strings; Offscreen fetches bytes natively</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>9. Limitations & Future Roadmap</h3>
+                        <p>While fully functional on local networks, current known trade-offs include:</p>
+                        <ul class="simple-list">
+                            <li><strong>STUN-only ICE:</strong> Works reliably on flat home LANs, but fails across subnets or strict symmetric NATs without a fallback TURN relay server.</li>
+                            <li><strong>In-Memory Signaling:</strong> Active device presence is volatile; server restarts require re-registration.</li>
+                            <li><strong>Resumability:</strong> Mid-transfer WebRTC dropouts currently restart from scratch. Adding sequence-numbered chunks with a resume handshake would bolster large transfer reliability.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>&copy; 2024 Adam Sayyed.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
